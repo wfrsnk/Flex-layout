@@ -1,20 +1,22 @@
 {
-  "name": "Flex-maket",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "browser-sync start --server  --no-notify --no-ui --cwd  --files index.html,style/**/*",
+    "test": "editorconfig-checker --exclude '.git|node_modules|. DS_Store'",
+    "html": "html-minifier --remove-comments --collapse-whitespace --input-dir src --output-dir dist --file-ext html",
+    "styles": "postcss src/styles/index.css --use postcss-import --use postcss-csso --no-map --output dist/styles/index.css",
+    "build": "npm run html && npm run styles",
+    "serve": "serve"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sibir-9k/Flex-layout.git"
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "editorconfig-checker": "^3.1.0",
+    "html-minifier": "^4.0.0",
+    "postcss-cli": "^7.1.1",
+    "postcss-csso": "^4.0.0",
+    "postcss-import": "^12.0.1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sibir-9k/Flex-layout/issues"
-  },
-  "homepage": "https://github.com/sibir-9k/Flex-layout#readme"
+  "dependencies": {
+    "serve": "^13.0.2"
+  }
 }
